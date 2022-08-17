@@ -1,12 +1,16 @@
 import 'package:flutter/gestures.dart';
 import "package:flutter/material.dart";
 import 'package:get/get.dart';
+import 'package:turf_booking_application/authcontroller.dart';
+var emailController = TextEditingController();
+var passwordController = TextEditingController();
 
 class SignupPage extends StatelessWidget {
   const SignupPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    
     List images = [
       "g.png",
       "f.png",
@@ -15,7 +19,7 @@ class SignupPage extends StatelessWidget {
     double h = MediaQuery.of(context).size.height;
 
     return Scaffold(
-        backgroundColor: Colors.white,
+        backgroundColor: Colors.green.shade100,
         body: Column(children: [
           Container(
               width: w,
@@ -60,6 +64,7 @@ class SignupPage extends StatelessWidget {
                           color: Colors.grey.withOpacity(0.2))
                     ]),
                 child: TextField(
+                  controller: emailController,
                   decoration: InputDecoration(
                       hintText: "Email",
                       prefixIcon: Icon(
@@ -93,6 +98,8 @@ class SignupPage extends StatelessWidget {
                           color: Colors.grey.withOpacity(0.2))
                     ]),
                 child: TextField(
+                  controller: passwordController,
+                  obscureText: true,
                   decoration: InputDecoration(
                       hintText: "Password",
                       prefixIcon: Icon(
@@ -119,52 +126,59 @@ class SignupPage extends StatelessWidget {
           SizedBox(
             height: 60,
           ),
-          Container(
-            width: w * 0.5,
-            height: h * 0.08,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(30),
-              image: DecorationImage(
-                  image: AssetImage("assets/Images/imagebtn1.jpg"),
-                  fit: BoxFit.cover),
-            ),
-            child: Center(
-              child: Text(
-                "Sign up",
-                style: TextStyle(
-                    fontSize: 36,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white),
+          GestureDetector(
+            onTap: () {
+              AuthController.instance.register(emailController.text, passwordController.text);
+            },
+            child: Container(
+              width: w * 0.5,
+              height: h * 0.08,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(30),
+                image: DecorationImage(
+                    image: AssetImage("assets/Images/imagebtn1.jpg"),
+                    fit: BoxFit.cover),
+              ),
+              child: Center(
+                child: Text(
+                  "Sign up",
+                  style: TextStyle(
+                      fontSize: 36,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white),
+                ),
               ),
             ),
           ),
-          SizedBox(height: 10,),
-          RichText(text: TextSpan(
-            recognizer: TapGestureRecognizer()..onTap=()=>Get.back(),
-            text: "Have an Account?",
-            style: TextStyle(
-              fontSize: 20,
-              color: Colors.grey[500]
-            )
-          )),
+          SizedBox(
+            height: 10,
+          ),
+          RichText(
+              text: TextSpan(
+                  recognizer: TapGestureRecognizer()..onTap = () => Get.back(),
+                  text: "Have an Account?",
+                  style: TextStyle(fontSize: 20, color: Colors.grey[700]))),
           SizedBox(height: w * 0.1),
           RichText(
               text: TextSpan(
             text: "Sign up using one of the following methods",
-            style: TextStyle(color: Colors.grey[500], fontSize: 16),
+            style: TextStyle(color: Colors.grey[700], fontSize: 16),
           )),
           Wrap(
-            children: List<Widget>.generate(2, (index) => Padding(
-              padding: const EdgeInsets.all(10.0),
-              child: CircleAvatar(
-                radius: 30,
-                backgroundColor: Colors.grey[500],
-                child: CircleAvatar(
-                  radius: 25,
-                  backgroundImage: AssetImage("assets/Images/"+images[index]),
-                ),
-              ),
-            )),
+            children: List<Widget>.generate(
+                2,
+                (index) => Padding(
+                      padding: const EdgeInsets.all(10.0),
+                      child: CircleAvatar(
+                        radius: 30,
+                        backgroundColor: Colors.grey[500],
+                        child: CircleAvatar(
+                          radius: 25,
+                          backgroundImage:
+                              AssetImage("assets/Images/" + images[index]),
+                        ),
+                      ),
+                    )),
           )
         ]));
   }

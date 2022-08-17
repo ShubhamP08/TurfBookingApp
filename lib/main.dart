@@ -1,10 +1,15 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:turf_booking_application/authcontroller.dart';
 import 'package:turf_booking_application/loginpage.dart';
 import 'package:turf_booking_application/signup_page.dart';
-import 'package:turf_booking_application/welcomepage.dart';
+import 'package:turf_booking_application/splashscreen.dart';
+import 'package:turf_booking_application/homepage.dart';
 import 'package:get/get.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp().then((value) => Get.put(AuthController()));
   runApp(const MyApp());
 }
 
@@ -19,7 +24,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: LoginPage(),
+      home: SplashScreen(),
     );
   }
 }
