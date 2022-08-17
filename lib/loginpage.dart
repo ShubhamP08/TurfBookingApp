@@ -1,5 +1,8 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:get/get.dart';
+import 'package:turf_booking_application/signup_page.dart';
 
 import '';
 
@@ -22,7 +25,9 @@ class LoginPage extends StatelessWidget {
                     image: AssetImage("assets/Images/loginimg2.png"),
                     fit: BoxFit.cover),
               )),
-              SizedBox(height:30,),
+          SizedBox(
+            height: 30,
+          ),
           Container(
             margin: const EdgeInsets.only(left: 20, right: 20),
             width: w,
@@ -52,6 +57,11 @@ class LoginPage extends StatelessWidget {
                     ]),
                 child: TextField(
                   decoration: InputDecoration(
+                      hintText: "Email",
+                      prefixIcon: Icon(
+                        Icons.email,
+                        color: Colors.green,
+                      ),
                       focusedBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(30),
                           borderSide: BorderSide(
@@ -80,6 +90,11 @@ class LoginPage extends StatelessWidget {
                     ]),
                 child: TextField(
                   decoration: InputDecoration(
+                      hintText: "Password",
+                      prefixIcon: Icon(
+                        Icons.password_outlined,
+                        color: Colors.green,
+                      ),
                       focusedBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(30),
                           borderSide: BorderSide(
@@ -130,7 +145,7 @@ class LoginPage extends StatelessWidget {
               ),
             ),
           ),
-          SizedBox(height: w * 0.15),
+          SizedBox(height: w * 0.10),
           RichText(
               text: TextSpan(
                   text: "Don\'t have an account?",
@@ -141,7 +156,11 @@ class LoginPage extends StatelessWidget {
                     style: TextStyle(
                         color: Colors.grey[500],
                         fontSize: 20,
-                        fontWeight: FontWeight.bold)),
+                        fontWeight: FontWeight.bold),
+                    recognizer: TapGestureRecognizer()
+                      ..onTap = () {
+                        Get.to(() => SignupPage());
+                      }),
               ]))
         ]));
   }

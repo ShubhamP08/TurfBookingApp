@@ -1,4 +1,6 @@
+import 'package:flutter/gestures.dart';
 import "package:flutter/material.dart";
+import 'package:get/get.dart';
 
 class SignupPage extends StatelessWidget {
   const SignupPage({Key? key}) : super(key: key);
@@ -26,7 +28,7 @@ class SignupPage extends StatelessWidget {
               child: Column(
                 children: [
                   SizedBox(
-                    height: h * 0.16,
+                    height: h * 0.175,
                   ),
                   CircleAvatar(
                     backgroundColor: Colors.white70,
@@ -112,17 +114,6 @@ class SignupPage extends StatelessWidget {
               SizedBox(
                 height: 15,
               ),
-              // Row(
-              //   children: [
-              //     Expanded(
-              //       child: Container(),
-              //     ),
-              //     Text(
-              //       "Forgot your Password ?",
-              //       style: TextStyle(fontSize: 20, color: Colors.grey),
-              //     ),
-              //   ],
-              // )
             ]),
           ),
           SizedBox(
@@ -147,7 +138,16 @@ class SignupPage extends StatelessWidget {
               ),
             ),
           ),
-          SizedBox(height: w * 0.15),
+          SizedBox(height: 10,),
+          RichText(text: TextSpan(
+            recognizer: TapGestureRecognizer()..onTap=()=>Get.back(),
+            text: "Have an Account?",
+            style: TextStyle(
+              fontSize: 20,
+              color: Colors.grey[500]
+            )
+          )),
+          SizedBox(height: w * 0.1),
           RichText(
               text: TextSpan(
             text: "Sign up using one of the following methods",

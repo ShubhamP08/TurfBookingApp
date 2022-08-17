@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "583229305955",
+    "project_id": "turf-booking-application",
+    "storage_bucket": "turf-booking-application.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:583229305955:android:e98e4731efc5ab4561b456",
+        "android_client_info": {
+          "package_name": "com.example.turf_booking_application"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "583229305955-ap3snq2o1uic6fp9vlfdj6kk36kjsueh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCwZt8GSSg_xfCzuhbg09aaxRCua7h7DHs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "583229305955-ap3snq2o1uic6fp9vlfdj6kk36kjsueh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
