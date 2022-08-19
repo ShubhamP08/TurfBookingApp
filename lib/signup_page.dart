@@ -27,7 +27,7 @@ class SignupPage extends StatelessWidget {
                 height: h * 0.3,
                 decoration: BoxDecoration(
                   image: DecorationImage(
-                      image: AssetImage("assets/Images/loginimg2.png"),
+                      image: AssetImage("assets/Images/0img.png"),
                       fit: BoxFit.cover),
                 ),
                 child: Column(

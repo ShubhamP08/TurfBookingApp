@@ -24,11 +24,13 @@ class LoginPage extends StatelessWidget {
           //padding: EdgeInsets.all(0),
           child: Column(children: [
             Container(
+              padding: EdgeInsets.all(10),
                 width: w,
                 height: h * 0.3,
                 decoration: BoxDecoration(
+                  
                   image: DecorationImage(
-                      image: AssetImage("assets/Images/loginimg2.png"),
+                      image: AssetImage("assets/Images/0img.png"),
                       fit: BoxFit.cover),
                 )),
             SizedBox(

@@ -1,13 +1,19 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/src/widgets/framework.dart';
 
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:turf_booking_application/aboutus.dart';
+import 'package:turf_booking_application/homepage.dart';
+import 'package:turf_booking_application/locations.dart';
+import 'package:turf_booking_application/profile.dart';
+import 'package:turf_booking_application/signup_page.dart';
 
 import 'authcontroller.dart';
 
 class MyDrawer extends StatelessWidget {
-  Widget listTile(
-      {IconData? icon, String? title, required Null Function() OnTap}) {
+  Widget listTile({IconData? icon, String? title}) {
     return ListTile(
       leading: Icon(
         icon,
@@ -35,7 +41,9 @@ class MyDrawer extends StatelessWidget {
                   radius: 43,
                   child: CircleAvatar(
                     backgroundColor: Colors.blueAccent[100],
-                    backgroundImage: NetworkImage("https://cdn-icons-png.flaticon.com/512/147/147142.png"),radius: 40,
+                    backgroundImage: NetworkImage(
+                        "https://cdn-icons-png.flaticon.com/512/147/147142.png"),
+                    radius: 40,
                   ),
                 ),
                 SizedBox(
@@ -66,26 +74,33 @@ class MyDrawer extends StatelessWidget {
               ],
             ),
           ),
-          listTile(icon: Icons.home_outlined, title: "Home", OnTap: () {}),
-          listTile(
-            icon: Icons.location_on,
-            title: "All Locations",
-            OnTap: () {},
+          listTile(icon: Icons.home_outlined, title: "Home"),
+          GestureDetector(
+            onTap: () {
+              Get.to(Locations());
+            },
+            child: listTile(
+              icon: Icons.location_on,
+              title: "All Locations",
+            ),
           ),
-          listTile(
-            icon: Icons.apartment,
-            title: "All Centers",
-            OnTap: () {},
+          GestureDetector(
+            onTap: () {
+              Get.to(Profile());
+            },
+            child: listTile(
+              icon: Icons.person,
+              title: "My Profile",
+            ),
           ),
-          listTile(
-            icon: Icons.person,
-            title: "My Profile",
-            OnTap: () {},
-          ),
-          listTile(
-            icon: Icons.info,
-            title: "About Us",
-            OnTap: () {},
+          GestureDetector(
+            onTap: () {
+              Get.to(AboutUs());
+            },
+            child: listTile(
+              icon: Icons.info,
+              title: "About Us",
+            ),
           ),
           // listTile(
           //   icon: Icons.logout,
