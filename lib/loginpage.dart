@@ -14,6 +14,7 @@ class LoginPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    bool changeButton = false;
     double w = MediaQuery.of(context).size.width;
     double h = MediaQuery.of(context).size.height;
 
@@ -24,11 +25,10 @@ class LoginPage extends StatelessWidget {
           //padding: EdgeInsets.all(0),
           child: Column(children: [
             Container(
-              padding: EdgeInsets.all(10),
+                padding: EdgeInsets.all(10),
                 width: w,
                 height: h * 0.3,
                 decoration: BoxDecoration(
-                  
                   image: DecorationImage(
                       image: AssetImage("assets/Images/0img.png"),
                       fit: BoxFit.cover),
@@ -141,29 +141,58 @@ class LoginPage extends StatelessWidget {
             SizedBox(
               height: 60,
             ),
-            GestureDetector(
-              onTap: () => AuthController.instance.login(
-                  emailController.text.trim(), passwordController.text.trim()),
-              child: Container(
-                width: w * 0.5,
-                height: h * 0.08,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(30),
-                  image: DecorationImage(
-                      image: AssetImage("assets/Images/imagebtn1.jpg"),
-                      fit: BoxFit.cover),
-                ),
-                child: Center(
-                  child: Text(
-                    "Sign in",
-                    style: TextStyle(
-                        fontSize: 36,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white),
-                  ),
+            Material(
+              color: Colors.green[500],
+              borderRadius: BorderRadius.circular(changeButton ? 50 : 20),
+              child: InkWell(
+                onTap: () => AuthController.instance.login(
+                    emailController.text.trim(),
+                    passwordController.text.trim()),
+                child: AnimatedContainer(
+                  duration: Duration(seconds: 1),
+                  margin: EdgeInsets.all(20),
+                  width: changeButton ? 20 : 120,
+                  height: 30,
+                  alignment: Alignment.center,
+                  child: changeButton
+                      ? Icon(
+                          Icons.done,
+                          color: Colors.white,
+                        )
+                      : Text(
+                          "Login",
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 25),
+                        ),
                 ),
               ),
             ),
+            // GestureDetector(
+            //   onTap: () => AuthController.instance.login(
+            //       emailController.text.trim(), passwordController.text.trim()),
+            //   child: Container(
+            //     width: w * 0.5,
+            //     height: h * 0.08,
+
+            //     decoration: BoxDecoration(
+            //       borderRadius: BorderRadius.circular(30),
+            //       image: DecorationImage(
+            //           image: AssetImage("assets/Images/imagebtn1.jpg"),
+            //           fit: BoxFit.cover),
+            //     ),
+            //     child: Center(
+            //       child: Text(
+            //         "Log in",
+            //         style: TextStyle(
+            //             fontSize: 36,
+            //             fontWeight: FontWeight.bold,
+            //             color: Colors.white),
+            //       ),
+            //     ),
+            //   ),
+            // ),
             SizedBox(height: w * 0.10),
             RichText(
                 text: TextSpan(

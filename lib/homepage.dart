@@ -1,9 +1,10 @@
-import 'dart:ffi';
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:turf_booking_application/loginpage.dart';
+import 'package:turf_booking_application/menu_item.dart';
 import 'package:turf_booking_application/aboutus.dart';
 import 'package:turf_booking_application/authcontroller.dart';
 import 'package:turf_booking_application/bookings.dart';
@@ -12,6 +13,9 @@ import 'package:carousel_pro/carousel_pro.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:turf_booking_application/locations.dart';
 import 'package:turf_booking_application/profile.dart';
+import 'package:turf_booking_application/menu_item.dart';
+import 'package:turf_booking_application/items.dart';
+import 'package:turf_booking_application/util/user_prefrences.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key, required String email}) : super(key: key);
@@ -27,6 +31,17 @@ class HomePage extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.green,
         title: Text("Turf Arena"),
+        centerTitle: true,
+        actions: [
+          PopupMenuButton<MenuItems>(
+            onSelected: (item) => onSelected(context, item),
+            itemBuilder: (context) => [
+              ...Items.First.map(buildItem).toList(),
+              PopupMenuDivider(),
+              ...Items.Second.map(buildItem).toList()
+            ],
+          ),
+        ],
       ),
       drawer: MyDrawer(),
       body: SingleChildScrollView(
@@ -38,7 +53,7 @@ class HomePage extends StatelessWidget {
             child: SafeArea(
               child: Center(
                   child: ListView(
-                    padding: EdgeInsets.all(10),
+                padding: EdgeInsets.all(10),
                 children: [
                   SizedBox(
                     height: 200.0,
@@ -81,94 +96,134 @@ class HomePage extends StatelessWidget {
               )),
             ),
           ),
-          SizedBox(
-            height: 0,
-          ),
+          // SizedBox(
+          //   height: 0,
+          // ),
           Container(
-              height: h,
-              width: 373,
-              child: ListView(
-                children: [
-                  GestureDetector(
-                    onTap: () { Get.to(()=>Locations());},
-                    child: Container(
+            height: h,
+            width: 373,
+            child: ListView(
+              children: [
+                GestureDetector(
+                  onTap: () {
+                    Get.to(() => Locations());
+                  },
+                  child: Container(
                       height: 100,
                       width: 150,
-                      child: Center(child: Text(
-                        "All Locations",
-                        style:
-                            TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                      ),),
+                      child: Center(
+                        child: Text(
+                          "All Locations",
+                          style: TextStyle(
+                              fontSize: 20, fontWeight: FontWeight.bold),
+                        ),
+                      ),
                       decoration: BoxDecoration(
                         color: Colors.white,
-                    image: DecorationImage(
-                        image: AssetImage("assets/Images/location.jpg"),
-                      alignment: Alignment.centerLeft),
-                                  )
-                    ),
-                  ),
-                  SizedBox(height: 15,),
-                  GestureDetector(
-                    onTap: () { Get.to(()=>Bookings());},
-                    child: Container(
+                        image: DecorationImage(
+                            image: AssetImage("assets/Images/location.jpg"),
+                            alignment: Alignment.centerLeft),
+                      )),
+                ),
+                SizedBox(
+                  height: 15,
+                ),
+                GestureDetector(
+                  onTap: () {
+                    Get.to(() => Bookings());
+                  },
+                  child: Container(
                       height: 100,
                       width: 150,
-                      child: Center(child: Text(
-                        "All Bookings",
-                        style:
-                            TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                      ),),
+                      child: Center(
+                        child: Text(
+                          "All Bookings",
+                          style: TextStyle(
+                              fontSize: 20, fontWeight: FontWeight.bold),
+                        ),
+                      ),
                       decoration: BoxDecoration(
                         color: Colors.white,
-                    image: DecorationImage(
-                        image: AssetImage("assets/Images/booking3.jpg"),
-                        alignment: Alignment.centerLeft),
-                                  )
-                    ),
-                  ),
-                  SizedBox(height: 15,),
-                  GestureDetector(
-                    onTap: () { Get.to(()=>Profile());},
-                    child: Container(
+                        image: DecorationImage(
+                            image: AssetImage("assets/Images/booking3.jpg"),
+                            alignment: Alignment.centerLeft),
+                      )),
+                ),
+                SizedBox(
+                  height: 15,
+                ),
+                GestureDetector(
+                  onTap: () {
+                    Get.to(() => Profile());
+                  },
+                  child: Container(
                       height: 100,
                       width: 150,
-                      child: Center(child: Text(
-                        "Profile",
-                        style:
-                            TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                      ),),
+                      child: Center(
+                        child: Text(
+                          "Profile",
+                          style: TextStyle(
+                              fontSize: 20, fontWeight: FontWeight.bold),
+                        ),
+                      ),
                       decoration: BoxDecoration(
                         color: Colors.white,
-                    image: DecorationImage(
-                        image: AssetImage("assets/Images/profile2.png"),
-                        alignment: Alignment.centerLeft),
-                                  )
-                    ),
-                  ),
-                  SizedBox(height: 15,),
-                  GestureDetector(
-                    onTap: () { Get.to(()=>AboutUs());},
-                    child: Container(
+                        image: DecorationImage(
+                            image: AssetImage("assets/Images/profile2.png"),
+                            alignment: Alignment.centerLeft),
+                      )),
+                ),
+                SizedBox(
+                  height: 15,
+                ),
+                GestureDetector(
+                  onTap: () {
+                    Get.to(() => AboutUs());
+                  },
+                  child: Container(
                       height: 100,
                       width: 150,
-                      child: Center(child: Text(
-                        "About Us",
-                        style:
-                            TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                      ),),
+                      child: Center(
+                        child: Text(
+                          "About Us",
+                          style: TextStyle(
+                              fontSize: 20, fontWeight: FontWeight.bold),
+                        ),
+                      ),
                       decoration: BoxDecoration(
                         color: Colors.white,
-                    image: DecorationImage(
-                        image: AssetImage("assets/Images/about.jpg"),
-                        alignment: Alignment.centerLeft),
-                                  )
-                    ),
-                  ),
-                ],
-              ),
-              ),
+                        image: DecorationImage(
+                            image: AssetImage("assets/Images/about.jpg"),
+                            alignment: Alignment.centerLeft),
+                      )),
+                ),
+              ],
+            ),
+          ),
         ],
       )),
     );
+  }
+
+  PopupMenuItem<MenuItems> buildItem(MenuItems item) =>
+      PopupMenuItem<MenuItems>(
+        value: item,
+        child: Row(
+          children: [
+            Icon(item.icon, color: Colors.green, size: 20),
+            const SizedBox(
+              width: 12,
+            ),
+            Text(item.text)
+          ],
+        ),
+      );
+
+  void onSelected(BuildContext context, MenuItems item) {
+    switch (item) {
+      case Items.logout:
+        Navigator.of(context)
+            .push(MaterialPageRoute(builder: (context) => LoginPage()));
+    }
   }
 }

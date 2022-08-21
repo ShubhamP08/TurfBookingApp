@@ -53,7 +53,7 @@ class MyDrawer extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      "Welcome, abc",
+                      "Welcome",
                       style: TextStyle(
                         fontSize: 25,
                       ),
@@ -61,29 +61,12 @@ class MyDrawer extends StatelessWidget {
                     SizedBox(
                       height: 7,
                     ),
-                    Container(
-                      height: 30,
-                      child: ElevatedButton(
-                          onPressed: () => AuthController.instance.logout(),
-                          child: Text("SignOut"),
-                          style:
-                              TextButton.styleFrom(minimumSize: Size(60, 40))),
-                    ),
                   ],
                 )
               ],
             ),
           ),
           listTile(icon: Icons.home_outlined, title: "Home"),
-          GestureDetector(
-            onTap: () {
-              Get.to(Locations());
-            },
-            child: listTile(
-              icon: Icons.location_on,
-              title: "All Locations",
-            ),
-          ),
           GestureDetector(
             onTap: () {
               Get.to(Profile());
@@ -102,13 +85,6 @@ class MyDrawer extends StatelessWidget {
               title: "About Us",
             ),
           ),
-          // listTile(
-          //   icon: Icons.logout,
-          //   title: "Logout",
-          //   OnTap: () {
-          //     AuthController.instance.logout();
-          //   },
-          // ),
           Container(
             height: 350,
             padding: EdgeInsets.symmetric(horizontal: 20),
