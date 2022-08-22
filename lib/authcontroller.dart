@@ -1,3 +1,4 @@
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -53,6 +54,7 @@ class AuthController extends GetxController {
       );
     }
   }
+  
 
   void login(String email, password)async {
     try {
@@ -76,6 +78,7 @@ class AuthController extends GetxController {
         )
       );
     }
+    
   }
 
   void logout()async{

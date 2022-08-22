@@ -9,9 +9,14 @@ import 'authcontroller.dart';
 var emailController = TextEditingController();
 var passwordController = TextEditingController();
 
-class LoginPage extends StatelessWidget {
+class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
 
+  @override
+  State<LoginPage> createState() => _LoginPageState();
+}
+
+class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     bool changeButton = false;
@@ -169,30 +174,6 @@ class LoginPage extends StatelessWidget {
                 ),
               ),
             ),
-            // GestureDetector(
-            //   onTap: () => AuthController.instance.login(
-            //       emailController.text.trim(), passwordController.text.trim()),
-            //   child: Container(
-            //     width: w * 0.5,
-            //     height: h * 0.08,
-
-            //     decoration: BoxDecoration(
-            //       borderRadius: BorderRadius.circular(30),
-            //       image: DecorationImage(
-            //           image: AssetImage("assets/Images/imagebtn1.jpg"),
-            //           fit: BoxFit.cover),
-            //     ),
-            //     child: Center(
-            //       child: Text(
-            //         "Log in",
-            //         style: TextStyle(
-            //             fontSize: 36,
-            //             fontWeight: FontWeight.bold,
-            //             color: Colors.white),
-            //       ),
-            //     ),
-            //   ),
-            // ),
             SizedBox(height: w * 0.10),
             RichText(
                 text: TextSpan(

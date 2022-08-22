@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 
 class SplashScreen extends StatelessWidget {
@@ -11,11 +13,10 @@ class SplashScreen extends StatelessWidget {
       color: Colors.white,
       child: Center(
         child: Container(
-          width: 100,
-          height: 100,
-          child: CircularProgressIndicator(
-            
-            backgroundColor: Colors.greenAccent)),
+            width: 100,
+            height: 100,
+            child:
+                CircularProgressIndicator(backgroundColor: Colors.greenAccent)),
       ),
     );
   }
