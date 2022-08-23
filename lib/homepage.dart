@@ -1,3 +1,4 @@
+import 'package:velocity_x/velocity_x.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -15,7 +16,6 @@ import 'package:turf_booking_application/locations.dart';
 import 'package:turf_booking_application/profile.dart';
 import 'package:turf_booking_application/menu_item.dart';
 import 'package:turf_booking_application/items.dart';
-import 'package:turf_booking_application/util/user_prefrences.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key, required String email}) : super(key: key);
@@ -49,7 +49,7 @@ class HomePage extends StatelessWidget {
         children: [
           Container(
             width: w,
-            height: h * 0.3,
+            height: h * 0.24,
             child: SafeArea(
               child: Center(
                   child: ListView(
@@ -96,12 +96,31 @@ class HomePage extends StatelessWidget {
               )),
             ),
           ),
-          // SizedBox(
-          //   height: 0,
-          // ),
+          SizedBox(
+            height: 10,
+          ),
+          Container(
+            height: 38,
+            width: 410,
+            alignment: Alignment.bottomLeft,
+            child:
+                Column(mainAxisAlignment: MainAxisAlignment.start, children: [
+              Text(
+                "DashBoard",
+                style: TextStyle(
+                  fontSize: 30,
+                  fontWeight: FontWeight.bold,
+                  //fontFamily: "Algerian",
+                ),
+              ).pOnly(left: 8)
+            ]),
+          ),
+          SizedBox(
+            height: 3,
+          ),
           Container(
             height: h,
-            width: 373,
+            width: 370,
             child: ListView(
               children: [
                 GestureDetector(
@@ -154,7 +173,7 @@ class HomePage extends StatelessWidget {
                 ),
                 GestureDetector(
                   onTap: () {
-                    Get.to(() => Profile());
+                    Get.to(() => ProfilePage());
                   },
                   child: Container(
                       height: 100,

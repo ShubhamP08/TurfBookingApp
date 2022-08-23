@@ -5,19 +5,22 @@ import 'package:flutter/src/widgets/framework.dart';
 
 import 'package:flutter/src/foundation/key.dart';
 
-class ProfilePage extends StatelessWidget {
-  const ProfilePage({Key? key}) : super(key: key);
+class BookPage extends StatelessWidget {
+  const BookPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Profile Page"),
         backgroundColor: Colors.green,
+        title: Text("Book Your Turf"),
       ),
-      body: Column(children: [Text("Welcome to Profile Page",
-      style: TextStyle(fontSize: 40)
-      )]),
+      body: Container(
+        child: Text("Book Turf Page",style: TextStyle(
+          fontSize: 30,
+          fontWeight: FontWeight.bold,
+        ),),
+      ),
     );
   }
 }
