@@ -3,7 +3,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:turf_booking_application/loginpage.dart';
 import 'package:turf_booking_application/menu_item.dart';
 import 'package:turf_booking_application/aboutus.dart';
@@ -120,7 +119,7 @@ class HomePage extends StatelessWidget {
           ),
           Container(
             height: h,
-            width: 370,
+            width: 410,
             child: ListView(
               children: [
                 GestureDetector(
@@ -173,7 +172,7 @@ class HomePage extends StatelessWidget {
                 ),
                 GestureDetector(
                   onTap: () {
-                    Get.to(() => ProfilePage());
+                    Get.to(() => ProfileScreen());
                   },
                   child: Container(
                       height: 100,

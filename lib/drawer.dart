@@ -69,7 +69,7 @@ class MyDrawer extends StatelessWidget {
           listTile(icon: Icons.home_outlined, title: "Home"),
           GestureDetector(
             onTap: () {
-              Get.to(ProfilePage());
+              Get.to(ProfileScreen());
             },
             child: listTile(
               icon: Icons.person,

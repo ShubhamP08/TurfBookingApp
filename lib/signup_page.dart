@@ -33,7 +33,7 @@ class SignupPage extends StatelessWidget {
                 child: Column(
                   children: [
                     SizedBox(
-                      height: h * 0.175,
+                      height: h * 0.170,
                     ),
                     CircleAvatar(
                       backgroundColor: Colors.white70,

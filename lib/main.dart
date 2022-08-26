@@ -6,7 +6,6 @@ import 'package:turf_booking_application/profile.dart';
 import 'package:turf_booking_application/signup_page.dart';
 import 'package:turf_booking_application/homepage.dart';
 import 'package:get/get.dart';
-import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:turf_booking_application/splashscreen.dart';
 
 Future<void> main() async {
@@ -23,9 +22,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
+      title: 'Flutter',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.green,
       ),
       home: SplashScreen(),
     );
