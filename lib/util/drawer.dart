@@ -4,13 +4,13 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:turf_booking_application/aboutus.dart';
-import 'package:turf_booking_application/homepage.dart';
-import 'package:turf_booking_application/locations.dart';
-import 'package:turf_booking_application/profile.dart';
-import 'package:turf_booking_application/signup_page.dart';
+import 'package:turf_booking_application/pages/aboutus.dart';
+import 'package:turf_booking_application/pages/homepage.dart';
+import 'package:turf_booking_application/pages/locations.dart';
+import 'package:turf_booking_application/pages/profile.dart';
+import 'package:turf_booking_application/pages/signup_page.dart';
 
-import 'authcontroller.dart';
+import '../trash_pages/authcontroller.dart';
 
 class MyDrawer extends StatelessWidget {
   Widget listTile({IconData? icon, String? title}) {

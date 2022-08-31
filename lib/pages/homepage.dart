@@ -1,23 +1,23 @@
 import 'package:provider/provider.dart';
-import 'package:turf_booking_application/signup_page.dart';
+import 'package:turf_booking_application/pages/signup_page.dart';
 import 'package:velocity_x/velocity_x.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:turf_booking_application/loginpage.dart';
-import 'package:turf_booking_application/menu_item.dart';
-import 'package:turf_booking_application/aboutus.dart';
-import 'package:turf_booking_application/authcontroller.dart';
-import 'package:turf_booking_application/bookings.dart';
-import 'package:turf_booking_application/drawer.dart';
+import 'package:turf_booking_application/trash_pages/trashlogin.dart';
+import 'package:turf_booking_application/item_details/menu_item.dart';
+import 'package:turf_booking_application/pages/aboutus.dart';
+import 'package:turf_booking_application/trash_pages/authcontroller.dart';
+import 'package:turf_booking_application/pages/bookings.dart';
+import 'package:turf_booking_application/util/drawer.dart';
 import 'package:carousel_pro/carousel_pro.dart';
-import 'package:turf_booking_application/locations.dart';
-import 'package:turf_booking_application/profile.dart';
-import 'package:turf_booking_application/menu_item.dart';
-import 'package:turf_booking_application/items.dart';
+import 'package:turf_booking_application/pages/locations.dart';
+import 'package:turf_booking_application/pages/profile.dart';
+import 'package:turf_booking_application/item_details/menu_item.dart';
+import 'package:turf_booking_application/item_details/items.dart';
 
-import 'google_sign_in.dart';
+import '../google_signin/google_sign_in.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);

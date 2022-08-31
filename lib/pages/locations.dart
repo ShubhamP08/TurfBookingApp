@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:turf_booking_application/locationdetails_page.dart';
+import 'package:turf_booking_application/pages/locationdetails_page.dart';
 import 'dart:convert';
 import 'package:velocity_x/velocity_x.dart';
 import 'package:turf_booking_application/util/data_widget.dart';

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:turf_booking_application/menu_item.dart';
+import 'package:turf_booking_application/item_details/menu_item.dart';
 
 class Items {
   static const List<MenuItems> Second = [logout];

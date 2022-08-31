@@ -1,4 +1,4 @@
-import 'package:turf_booking_application/locations.dart';
+import 'package:turf_booking_application/pages/locations.dart';
 
 class TurfModel {
   static List<Data> data = [];

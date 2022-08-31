@@ -2,15 +2,15 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
-import 'package:turf_booking_application/authcontroller.dart';
-import 'package:turf_booking_application/google_sign_in.dart';
-import 'package:turf_booking_application/logged_in_page.dart';
-import 'package:turf_booking_application/loginpage.dart';
-import 'package:turf_booking_application/profile.dart';
-import 'package:turf_booking_application/signup_page.dart';
-import 'package:turf_booking_application/homepage.dart';
+import 'package:turf_booking_application/trash_pages/authcontroller.dart';
+import 'package:turf_booking_application/google_signin/google_sign_in.dart';
+import 'package:turf_booking_application/google_signin/signin_route.dart';
+import 'package:turf_booking_application/trash_pages/trashlogin.dart';
+import 'package:turf_booking_application/pages/profile.dart';
+import 'package:turf_booking_application/pages/signup_page.dart';
+import 'package:turf_booking_application/pages/homepage.dart';
 import 'package:get/get.dart';
-import 'package:turf_booking_application/splashscreen.dart';
+import 'package:turf_booking_application/trash_pages/splashscreen.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();

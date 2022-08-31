@@ -3,8 +3,8 @@ import "package:flutter/material.dart";
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:provider/provider.dart';
-import 'package:turf_booking_application/authcontroller.dart';
-import 'package:turf_booking_application/google_sign_in.dart';
+import 'package:turf_booking_application/trash_pages/authcontroller.dart';
+import 'package:turf_booking_application/google_signin/google_sign_in.dart';
 
 // var emailController = TextEditingController();
 // var passwordController = TextEditingController();

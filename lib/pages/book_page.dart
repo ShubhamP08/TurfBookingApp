@@ -4,8 +4,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:turf_booking_application/bookings.dart';
-import 'package:turf_booking_application/payment_page.dart';
+import 'package:turf_booking_application/pages/bookings.dart';
 import 'package:turf_booking_application/util/turfmodel.dart';
 import 'package:velocity_x/velocity_x.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -22,6 +21,7 @@ class BookPage extends StatefulWidget {
 }
 
 class _BookPageState extends State<BookPage> {
+  Data? turf;
   final _formKey = GlobalKey<FormState>();
   var name = "";
   var email = "";
@@ -125,7 +125,7 @@ class _BookPageState extends State<BookPage> {
                         controller: nameController,
                         validator: (value) {
                           if (value!.isEmpty ||
-                              !RegExp(r'^[a-z A-Z]+$').hasMatch(value!)) {
+                              !RegExp(r'^[a-z A-Z]+$').hasMatch(value)) {
                             return 'Please Enter Name Correctly';
                           } else {
                             return null;
@@ -199,9 +199,8 @@ class _BookPageState extends State<BookPage> {
                       ),
                     ),
                     Container(
+                      margin: EdgeInsets.symmetric(vertical: 10.0),
                       child: TextField(
-                        controller: datecontroller,
-                        autofocus: false,
                         decoration: InputDecoration(
                           icon: Icon(Icons.calendar_today_rounded),
                           labelText: 'Select Date',
@@ -210,6 +209,7 @@ class _BookPageState extends State<BookPage> {
                           errorStyle:
                               TextStyle(color: Colors.redAccent, fontSize: 15),
                         ),
+                        controller: datecontroller,
                         onTap: () async {
                           DateTime? pickeddate = await showDatePicker(
                               context: context,
@@ -243,16 +243,18 @@ class _BookPageState extends State<BookPage> {
                 time = timeController.text;
                 date = datecontroller.text;
                 addUser();
-                showDialog(context: context, builder: (_) => AlertDialog(
-                  title: Text('Your Turf is Booked'),
-                  actions: [
-                    OutlinedButton(
-                        onPressed: () {
-                          Get.to(Bookings());
-                        },
-                        child: Text("Okay"))
-                  ],
-                ));
+                showDialog(
+                    context: context,
+                    builder: (_) => AlertDialog(
+                          title: Text('Your Turf is Booked'),
+                          actions: [
+                            OutlinedButton(
+                                onPressed: () {
+                                  Get.to(Bookings());
+                                },
+                                child: Text("Okay"))
+                          ],
+                        ));
               }
             },
             child: Text(

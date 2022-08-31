@@ -1,7 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:turf_booking_application/book_page.dart';
+import 'package:turf_booking_application/pages/book_page.dart';
 import 'package:turf_booking_application/util/turfmodel.dart';
 import 'package:velocity_x/velocity_x.dart';
 
@@ -16,6 +16,7 @@ class LocationDetails extends StatelessWidget {
         backgroundColor: Colors.green,
       ),
       //backgroundColor: Colors.grey,
+      
       bottomNavigationBar: Container(
         color: context.cardColor,
         child: ButtonBar(
