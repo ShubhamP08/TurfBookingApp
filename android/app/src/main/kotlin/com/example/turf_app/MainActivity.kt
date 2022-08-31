@@ -1,4 +1,4 @@
-package com.example.turf_booking_application
+package com.example.turf_app
 
 import io.flutter.embedding.android.FlutterActivity
 

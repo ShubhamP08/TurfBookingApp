@@ -1,16 +1,19 @@
 import 'package:flutter/gestures.dart';
 import "package:flutter/material.dart";
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
+import 'package:provider/provider.dart';
 import 'package:turf_booking_application/authcontroller.dart';
-var emailController = TextEditingController();
-var passwordController = TextEditingController();
+import 'package:turf_booking_application/google_sign_in.dart';
+
+// var emailController = TextEditingController();
+// var passwordController = TextEditingController();
 
 class SignupPage extends StatelessWidget {
   const SignupPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    
     List images = [
       "g.png",
       "f.png",
@@ -21,167 +24,97 @@ class SignupPage extends StatelessWidget {
     return Scaffold(
         backgroundColor: Colors.green.shade100,
         body: SingleChildScrollView(
-          child: Column(children: [
-            Container(
-                width: w,
-                height: h * 0.3,
-                decoration: BoxDecoration(
-                  image: DecorationImage(
-                      image: AssetImage("assets/Images/0img.png"),
-                      fit: BoxFit.cover),
-                ),
-                child: Column(
-                  children: [
-                    SizedBox(
-                      height: h * 0.170,
-                    ),
-                    CircleAvatar(
-                      backgroundColor: Colors.white70,
-                      radius: 50,
-                      backgroundImage: AssetImage("assets/Images/singupimg.png"),
-                    )
-                  ],
-                )),
-            SizedBox(
-              height: 30,
-            ),
-            Container(
-              margin: const EdgeInsets.only(left: 20, right: 20),
+            child: Column(children: [
+          Container(
               width: w,
-              child:
-                  Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                SizedBox(
-                  height: 50,
-                ),
-                Container(
-                  decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(30),
-                      boxShadow: [
-                        BoxShadow(
-                            blurRadius: 10,
-                            spreadRadius: 7,
-                            offset: Offset(1, 1),
-                            color: Colors.grey.withOpacity(0.2))
-                      ]),
-                  child: TextField(
-                    controller: emailController,
-                    decoration: InputDecoration(
-                        hintText: "Email",
-                        prefixIcon: Icon(
-                          Icons.email,
-                          color: Colors.green,
-                        ),
-                        focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(30),
-                            borderSide: BorderSide(
-                              color: Colors.white,
-                              width: 1.0,
-                            )),
-                        border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(30),
-                            borderSide:
-                                BorderSide(color: Colors.white, width: 1.0))),
-                  ),
-                ),
-                SizedBox(
-                  height: 20,
-                ),
-                Container(
-                  decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(30),
-                      boxShadow: [
-                        BoxShadow(
-                            blurRadius: 10,
-                            spreadRadius: 7,
-                            offset: Offset(1, 1),
-                            color: Colors.grey.withOpacity(0.2))
-                      ]),
-                  child: TextField(
-                    controller: passwordController,
-                    obscureText: true,
-                    decoration: InputDecoration(
-                        hintText: "Password",
-                        prefixIcon: Icon(
-                          Icons.password_outlined,
-                          color: Colors.green,
-                        ),
-                        focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(30),
-                            borderSide: BorderSide(
-                              color: Colors.white,
-                              width: 1.0,
-                            )),
-                        border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(30),
-                            borderSide:
-                                BorderSide(color: Colors.white, width: 1.0))),
-                  ),
-                ),
-                SizedBox(
-                  height: 15,
-                ),
-              ]),
-            ),
-            SizedBox(
-              height: 60,
-            ),
-            GestureDetector(
-              onTap: () {
-                AuthController.instance.register(emailController.text, passwordController.text);
-              },
-              child: Container(
-                width: w * 0.5,
-                height: h * 0.08,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(30),
-                  image: DecorationImage(
-                      image: AssetImage("assets/Images/imagebtn1.jpg"),
-                      fit: BoxFit.cover),
-                ),
-                child: Center(
-                  child: Text(
-                    "Sign up",
-                    style: TextStyle(
-                        fontSize: 36,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white),
-                  ),
-                ),
+              height: h * 0.3,
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                    image: AssetImage("assets/Images/0img.png"),
+                    fit: BoxFit.cover),
               ),
-            ),
-            SizedBox(
-              height: 10,
-            ),
-            RichText(
-                text: TextSpan(
-                    recognizer: TapGestureRecognizer()..onTap = () => Get.back(),
-                    text: "Have an Account?",
-                    style: TextStyle(fontSize: 20, color: Colors.grey[700]))),
-            SizedBox(height: w * 0.1),
-            RichText(
-                text: TextSpan(
-              text: "Sign up using one of the following methods",
-              style: TextStyle(color: Colors.grey[700], fontSize: 16),
-            )),
-            Wrap(
-              children: List<Widget>.generate(
-                  2,
-                  (index) => Padding(
-                        padding: const EdgeInsets.all(10.0),
-                        child: CircleAvatar(
-                          radius: 30,
-                          backgroundColor: Colors.grey[500],
-                          child: CircleAvatar(
-                            radius: 25,
-                            backgroundImage:
-                                AssetImage("assets/Images/" + images[index]),
-                          ),
-                        ),
-                      )),
-            )
-          ]),
-        ));
+              child: Column(
+                children: [
+                  SizedBox(
+                    height: h * 0.19,
+                  ),
+                  CircleAvatar(
+                    backgroundColor: Colors.white70,
+                    radius: 50,
+                    backgroundImage: AssetImage("assets/Images/singupimg.png"),
+                  )
+                ],
+              )),
+          SizedBox(
+            height: 50,
+          ),
+          SizedBox(
+            height: 10,
+          ),
+          Container(
+            margin: const EdgeInsets.only(left: 20, right: 20),
+            width: w,
+            child:
+                Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+              Text(
+                "Hello",
+                style: TextStyle(fontSize: 60, fontWeight: FontWeight.bold),
+              ),
+              Text(
+                "Sign into your account",
+                style: TextStyle(fontSize: 20, color: Colors.grey.shade700),
+              ),
+              SizedBox(
+                height: 300,
+              ),
+              ElevatedButton.icon(
+                  style: ElevatedButton.styleFrom(
+                    primary: Colors.white,
+                    onPrimary: Colors.black,
+                    minimumSize: Size(double.infinity, 50),
+                  ),
+                  icon: FaIcon(
+                    FontAwesomeIcons.google,
+                    color: Colors.red,
+                  ),
+                  label: Text("Sign Up with Google"),
+                  onPressed: () {
+                    final provider = Provider.of<GoogleSignInProvider>(context,
+                        listen: false);
+                    provider.googleLogin();
+                  }).paddingSymmetric(horizontal: 20),
+              // RichText(
+              //     text: TextSpan(
+              //         recognizer: TapGestureRecognizer()
+              //           ..onTap = () => Get.back(),
+              //         text: "Have an Account, Login !",
+              //         style: TextStyle(fontSize: 20, color: Colors.grey[700]))),
+              SizedBox(height: w * 0.2),
+              Center(
+                child: RichText(
+                    text: TextSpan(
+                      text: "Version 0.0.1",
+                      style: TextStyle(color: Colors.grey[700], fontSize: 16),
+                )),
+              ),
+              // Wrap(
+              //   children: List<Widget>.generate(
+              //       2,
+              //       (index) => Padding(
+              //             padding: const EdgeInsets.all(10.0),
+              //             child: CircleAvatar(
+              //               radius: 30,
+              //               backgroundColor: Colors.grey[500],
+              //               child: CircleAvatar(
+              //                 radius: 25,
+              //                 backgroundImage:
+              //                     AssetImage("assets/Images/" + images[index]),
+              //               ),
+              //             ),
+              //           )),
+              // )
+            ]),
+          )
+        ])));
   }
 }

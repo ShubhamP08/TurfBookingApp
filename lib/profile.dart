@@ -1,101 +1,93 @@
 import 'dart:io';
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
+import 'package:turf_booking_application/util/profile_widget.dart';
+import 'package:velocity_x/velocity_x.dart';
 
-import 'package:flutter/src/foundation/key.dart';
-import 'package:turf_booking_application/createprofile_page.dart';
-import 'package:turf_booking_application/mainprofile_page.dart';
-
-class ProfileScreen extends StatefulWidget {
-  ProfileScreen({Key? key}) : super(key: key);
-
-  @override
-  _ProfileScreenState createState() => _ProfileScreenState();
-}
-
-class _ProfileScreenState extends State<ProfileScreen> {
-  //NetworkHandler networkHandler = NetworkHandler();
-  Widget page = CircularProgressIndicator();
-  @override
-  // void initState() {
-  //   // TODO: implement initState
-  //   super.initState();
-  //   checkProfile();
-  // }
-
-  // void checkProfile() async {
-  //   var response = await networkHandler.get("/profile/checkProfile");
-  //   if (response["status"] == true) {
-  //     setState(() {
-  //       page = MainProfile();
-  //     });
-  //   } else {
-  //     setState(() {
-  //       page = button();
-  //     });
-  //   }
-  // }
+class ProfilePage extends StatelessWidget {
+  const ProfilePage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final user = FirebaseAuth.instance.currentUser!;
     return Scaffold(
-      backgroundColor: Color(0xffEEEEFF),
-      body: button(),
       appBar: AppBar(
-        title: Text("Profile Page"),
         backgroundColor: Colors.green,
+        title: Text("Profile Page"),
       ),
-    );
-  }
-
-  Widget showProfile() {
-    return Center(child: Text("Profile Data is Avalable"));
-  }
-
-  Widget button() {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 70),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: <Widget>[
-          Text(
-            "Tap to button to add profile data",
-            textAlign: TextAlign.center,
-            style: TextStyle(
-              color: Colors.deepOrange,
-              fontSize: 18,
-            ),
-          ),
-          SizedBox(
-            height: 30,
-          ),
-          InkWell(
-            onTap: () => {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => CreatProfile()))
-            },
-            child: Container(
-              height: 60,
-              width: 150,
-              decoration: BoxDecoration(
-                color: Colors.blueGrey,
-                borderRadius: BorderRadius.circular(20),
-              ),
-              child: Center(
-                child: Text(
-                  "Add Proile",
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 18,
+      
+      body: Container(
+        alignment: Alignment.center,
+        
+        child: Column(
+          
+          children: [
+            Container(
+            padding: Vx.m24,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Center(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      "User Details"
+                          .text
+                          .xl5
+                          .bold
+                          .color(Colors.green)
+                          .make(),
+                    ],
                   ),
-                ),
-              ),
+                )
+              ],
             ),
           ),
-        ],
+            SizedBox(height: 100,),
+            CircleAvatar(
+            radius: 40,
+            backgroundImage: NetworkImage(user.photoURL!),
+          ),
+          SizedBox(height: 10,),
+          Text(
+            'Name: ' + user.displayName!,
+            style:TextStyle(color: Colors.black,fontSize: 20) ,
+          ),
+          SizedBox(height:10 ,),
+          Text(
+            'Email: ' + user.email!,
+            style:TextStyle(color: Colors.black,fontSize: 20) ,
+          ),
+          ] 
+        ),
       ),
+      // body: ListView(
+      //   physics: BouncingScrollPhysics(),
+      //   children: [
+      //     SizedBox(
+      //       height: 45,
+      //     ),
+      //     ProfileWidget(),
+      //     const SizedBox(height: 24),
+      //     buildName(),
+      //     const SizedBox(height: 24),
+      //   ],
+      // ),
     );
   }
 }
+
+// Widget buildName() => Column(
+//       children: [
+//         Text(
+//           "Bill Gates",
+//           style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
+//         ),
+//         const SizedBox(height: 4),
+//         Text(
+//           "billgates123@gmail.com",
+//           style: TextStyle(color: Colors.grey),
+//         )
+//       ],
+//     );

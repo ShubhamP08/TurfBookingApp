@@ -1,3 +1,5 @@
+import 'package:provider/provider.dart';
+import 'package:turf_booking_application/signup_page.dart';
 import 'package:velocity_x/velocity_x.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
@@ -10,14 +12,15 @@ import 'package:turf_booking_application/authcontroller.dart';
 import 'package:turf_booking_application/bookings.dart';
 import 'package:turf_booking_application/drawer.dart';
 import 'package:carousel_pro/carousel_pro.dart';
-import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:turf_booking_application/locations.dart';
 import 'package:turf_booking_application/profile.dart';
 import 'package:turf_booking_application/menu_item.dart';
 import 'package:turf_booking_application/items.dart';
 
+import 'google_sign_in.dart';
+
 class HomePage extends StatelessWidget {
-  const HomePage({Key? key, required String email}) : super(key: key);
+  const HomePage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -35,8 +38,6 @@ class HomePage extends StatelessWidget {
           PopupMenuButton<MenuItems>(
             onSelected: (item) => onSelected(context, item),
             itemBuilder: (context) => [
-              ...Items.First.map(buildItem).toList(),
-              PopupMenuDivider(),
               ...Items.Second.map(buildItem).toList()
             ],
           ),
@@ -172,7 +173,7 @@ class HomePage extends StatelessWidget {
                 ),
                 GestureDetector(
                   onTap: () {
-                    Get.to(() => ProfileScreen());
+                    Get.to(() => ProfilePage());
                   },
                   child: Container(
                       height: 100,
@@ -238,10 +239,12 @@ class HomePage extends StatelessWidget {
       );
 
   void onSelected(BuildContext context, MenuItems item) {
-    switch (item) {
-      case Items.logout:
-        Navigator.of(context)
-            .push(MaterialPageRoute(builder: (context) => LoginPage()));
-    }
+    final provider = Provider.of<GoogleSignInProvider>(context, listen: false);
+    provider.logout();
+    // switch (item) {
+    //   case Items.logout:
+    //     Navigator.of(context)
+    //         .push(MaterialPageRoute(builder: (context) => SignupPage()));
+    // }
   }
 }

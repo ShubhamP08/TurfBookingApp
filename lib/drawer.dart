@@ -28,6 +28,7 @@ class MyDrawer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final user = FirebaseAuth.instance.currentUser!;
     return Drawer(
       child: Container(
         width: 100,
@@ -41,8 +42,7 @@ class MyDrawer extends StatelessWidget {
                   radius: 43,
                   child: CircleAvatar(
                     backgroundColor: Colors.blueAccent[100],
-                    backgroundImage: NetworkImage(
-                        "https://cdn-icons-png.flaticon.com/512/147/147142.png"),
+                    backgroundImage: NetworkImage(user.photoURL!),
                     radius: 40,
                   ),
                 ),
@@ -53,9 +53,9 @@ class MyDrawer extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      "Welcome",
+                      "Welcome, \n"+ user.displayName!,
                       style: TextStyle(
-                        fontSize: 25,
+                        fontSize: 20,
                       ),
                     ),
                     SizedBox(
@@ -66,10 +66,14 @@ class MyDrawer extends StatelessWidget {
               ],
             ),
           ),
-          listTile(icon: Icons.home_outlined, title: "Home"),
+          GestureDetector(
+              onTap: () {
+                Navigator.pop(context);
+              },
+              child: listTile(icon: Icons.home_outlined, title: "Home")),
           GestureDetector(
             onTap: () {
-              Get.to(ProfileScreen());
+              Get.to(ProfilePage());
             },
             child: listTile(
               icon: Icons.person,

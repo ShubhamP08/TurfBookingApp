@@ -1,33 +1,41 @@
 {
   "project_info": {
-    "project_number": "972276795868",
-    "project_id": "turfapp-9b053",
-    "storage_bucket": "turfapp-9b053.appspot.com"
+    "project_number": "835064006415",
+    "project_id": "turfapp-71780",
+    "storage_bucket": "turfapp-71780.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:972276795868:android:d6f444813ed04c8c626719",
+        "mobilesdk_app_id": "1:835064006415:android:2e38b74080c10a415b607a",
         "android_client_info": {
           "package_name": "com.example.turf_booking_application"
         }
       },
       "oauth_client": [
         {
-          "client_id": "972276795868-11kcac032g38qd9oqfgvomt8lceu6cmo.apps.googleusercontent.com",
+          "client_id": "835064006415-7c57keun3tj54vo955pha3ilj44bh7n6.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.turf_booking_application",
+            "certificate_hash": "693328d7a64ef6197d02a83141ce82ea3e8a43ce"
+          }
+        },
+        {
+          "client_id": "835064006415-rn8hltpmomn7k4q3903tkp4v27t0dgv4.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBw-5UtK6thSFWCemrK-AHfCSmrxE141cw"
+          "current_key": "AIzaSyCto2fF8hiqkE3yN_2IcX2hqzvpF5eMa7o"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "972276795868-11kcac032g38qd9oqfgvomt8lceu6cmo.apps.googleusercontent.com",
+              "client_id": "835064006415-rn8hltpmomn7k4q3903tkp4v27t0dgv4.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
