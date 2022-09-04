@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:io';
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
@@ -37,22 +38,6 @@ class _BookPageState extends State<BookPage> {
   final datecontroller = TextEditingController();
 
   @override
-  // void dispose() {
-  //   Clean up the controller when the widget is disposed.
-  //   nameController.dispose();
-  //   emailController.dispose();
-  //   numberController.dispose();
-  //   timeController.dispose();
-  //   super.dispose();
-  // }
-
-  // clearText() {
-  //   nameController.clear();
-  //   emailController.clear();
-  //   numberController.clear();
-  //   timeController.clear();
-  // }
-
   // Adding Student
   CollectionReference users = FirebaseFirestore.instance.collection('users');
 
@@ -73,6 +58,7 @@ class _BookPageState extends State<BookPage> {
   Widget build(
     BuildContext context,
   ) {
+    final user = FirebaseAuth.instance.currentUser!;
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.green,
@@ -114,6 +100,7 @@ class _BookPageState extends State<BookPage> {
                       margin: EdgeInsets.symmetric(vertical: 10.0),
                       child: TextFormField(
                         autofocus: false,
+                        
                         decoration: InputDecoration(
                           icon: Icon(Icons.supervised_user_circle),
                           labelText: 'Name',

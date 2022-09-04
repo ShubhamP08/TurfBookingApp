@@ -12,13 +12,16 @@ class LocationDetails extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      
+      backgroundColor: Colors.grey[300],
       appBar: AppBar(
         backgroundColor: Colors.green,
+        title: Text("Details"),
       ),
       //backgroundColor: Colors.grey,
       
       bottomNavigationBar: Container(
-        color: context.cardColor,
+        color: Colors.grey[300],
         child: ButtonBar(
           alignment: MainAxisAlignment.spaceBetween,
           buttonPadding: EdgeInsets.zero,
@@ -43,7 +46,7 @@ class LocationDetails extends StatelessWidget {
           children: [
             Hero(
               tag: Key(turf.id.toString()),
-              child: Image.network(turf.image),
+              child: Image.network(turf.image,),
             ).h32(context),
             Expanded(
               //   child: VxArc(
@@ -51,19 +54,31 @@ class LocationDetails extends StatelessWidget {
               // arcType: VxArcType.CONVEY,
               // edge: VxEdge.TOP,
               child: Container(
-                color: context.cardColor,
+                color: Colors.green[100],
                 width: context.screenWidth,
                 child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    turf.name.text.xl4.color(Colors.black).make(),
-                    turf.add.text
-                        .textStyle(context.captionStyle)
-                        .lg
-                        .make().pSymmetric(h: 5),
-                    SizedBox(height: 10,),
-                    turf.num.text.textStyle(context.captionStyle).lg.make(),
+                    turf.name.text.xl5.color(Colors.black).make().centered().paddingSymmetric(horizontal: 5),
+                    SizedBox(height: 20,),
+                    Text("Address", textAlign: TextAlign.left,style: TextStyle(
+                      fontSize:22, fontWeight: FontWeight.bold,
+                    ),).pSymmetric(h: 20),
+                    turf.add.text.xl
+                        .make().pSymmetric(h: 20),
+                    SizedBox(height: 20,),
+                    Text("Contact no.", textAlign: TextAlign.left,style: TextStyle(
+                      fontSize:22, fontWeight: FontWeight.bold,
+                    ),).pSymmetric(h: 20),
+                    turf.num.text.xl.make().pSymmetric(h: 20),
+                    SizedBox(height: 20,),
+                    Text("More Details", textAlign: TextAlign.left,style: TextStyle(
+                      fontSize:22, fontWeight: FontWeight.bold,
+                    ),).pSymmetric(h: 20),
+                    "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.".text.lg.make().pSymmetric(h: 20)
                   ],
-                ).py64(),
+                ).py(30),
               ),
             )
           ],
